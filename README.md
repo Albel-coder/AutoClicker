@@ -1,4 +1,4 @@
-# Autoclicker
+# AutoClicker
 
 A universal mouse and keyboard automation tool written in C++ using the Windows API. This easy-to-use program automates repetitive tasks in any Windows application.
 
