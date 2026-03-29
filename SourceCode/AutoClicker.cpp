@@ -22,31 +22,31 @@ void performMouseClick(int button) {
     switch (button) {
     case 0: // left mouse button
         input.mi.dwFlags = MOUSEEVENTF_LEFTDOWN;
-        sendInput(1, &input, sizeof(INPUT));
-        zeroMemory(&input, sizeof(INPUT));
+        SendInput(1, &input, sizeof(INPUT));
+        ZeroMemory(&input, sizeof(INPUT));
         input.type = INPUT_MOUSE;
         input.mi.dwFlags = MOUSEEVENTF_LEFTUP;
         break;
 
     case 1: // right mouse button
         input.mi.dwFlags = MOUSEEVENTF_RIGHTDOWN;
-        sendInput(1, &input, sizeof(INPUT));
-        zeroMemory(&input, sizeof(INPUT));
+        SendInput(1, &input, sizeof(INPUT));
+        ZeroMemory(&input, sizeof(INPUT));
         input.type = INPUT_MOUSE;
         input.mi.dwFlags = MOUSEEVENTF_RIGHTUP;
         break;
 
     case 2: // middle mouse button
         input.mi.dwFlags = MOUSEEVENTF_MIDDLEDOWN;
-        sendInput(1, &input, sizeof(INPUT));
-        zeroMemory(&input, sizeof(INPUT));
+        SendInput(1, &input, sizeof(INPUT));
+        ZeroMemory(&input, sizeof(INPUT));
         input.type = INPUT_MOUSE;
         input.mi.dwFlags = MOUSEEVENTF_MIDDLEUP;
         break;
 
     }
 
-    sendInput(1, &input, sizeof(INPUT));
+    SendInput(1, &input, sizeof(INPUT));
 }
 
 // function for perform key press
@@ -56,11 +56,11 @@ void performKeyPress(int vkCode) {
     // press key
     input.type = INPUT_KEYBOARD;
     input.ki.wVk = vkCode;
-    sendInput(1, &input, sizeof(INPUT));
+    SendInput(1, &input, sizeof(INPUT));
 
     // release key
     input.ki.dwFlags = KEYEVENTF_KEYUP;
-    sendInput(1, &input, sizeof(INPUT));
+    SendInput(1, &input, sizeof(INPUT));
 }
 
 // function for more info about program
@@ -81,7 +81,7 @@ void showStatus() {
     showHelp();
 
     std::cout << "Current status: \n";
-    std::cout << "Mouse autoclicker: " << (IsMouseClicking ? "ON" : "OFF") << "\n";
+    std::cout << "Mouse autoclicker: " << (isMouseClicking ? "ON" : "OFF") << "\n";
 
     std::string buttonName;
     switch (mouseButton) {
@@ -98,64 +98,62 @@ void showStatus() {
 
     std::cout << "Mouse button: " << buttonName << "\n";
     std::cout << "Key: " << (char)keyCode << " (0x" << std::hex << keyCode << ")\n";
-    std::cout << "Interval: " << std::dec << clickInterval << "milliseconds\n";
-    
+    std::cout << "Interval: " << std::dec << clickInterval << "milliseconds\n";    
 }
 
-// function for selecting keys
-void selectKey()
-{
+// Function for selecting keys
+void selectKey() {
     std::cout << "Enter key char for emulate: ";
     char character;
     std::cin >> character;
-    KeyCode = VkKeyScanA(character) & 0xFF; // we get the virtual key code
+    keyCode = VkKeyScanA(character) & 0xFF;
 }
 
 int main() {
     showStatus();
 
     while (true) {
-        // check hot keys
+        // Check hot keys
         if (GetAsyncKeyState(VK_F6) & 0x8000) {
-            isMouseClicking = !IsMouseClicking;
+            isMouseClicking = !isMouseClicking;
             showStatus();
-            sleep(300);
+            Sleep(300);
         }
         if (GetAsyncKeyState(VK_F7) & 0x8000) {
-            isKeyPressing = !IsKeyPressing;
+            isKeyPressing = !isKeyPressing;
             showStatus();
-            sleep(300);
+            Sleep(300);
         }
 
         if (GetAsyncKeyState(VK_F8) & 0x8000) {
             mouseButton = (mouseButton + 1) % 3; // Circle 0->1->2->0
             showStatus();
-            sleep(300);
+            Sleep(300);
         }
 
         if (GetAsyncKeyState(VK_F9) & 0x8000) {
             selectKey();
             showStatus();
-            sleep(300);
+            Sleep(300);
         }
 
         if (GetAsyncKeyState(VK_ADD) & 0x8000) {
             clickInterval += 10;
             showStatus();
-            sleep(300);
+            Sleep(300);
         }
 
         if (GetAsyncKeyState(VK_SUBTRACT) & 0x8000) {
             clickInterval = (((10) > (clickInterval - 10)) ? (10) : (clickInterval - 10));
             showStatus();
-            sleep(300);
+            Sleep(300);
         }
 
         if (GetAsyncKeyState(VK_F10) & 0x8000) {
             break;
         }
 
-        // execute
+        // Execute
         if (isMouseClicking) {
             performMouseClick(mouseButton);
         }
@@ -164,8 +162,7 @@ int main() {
             performKeyPress(keyCode);
         }
 
-        // Sleep
-        sleep(clickInterval);
+        Sleep(clickInterval);
     }
 
     return 0;
