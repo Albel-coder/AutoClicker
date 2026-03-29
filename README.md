@@ -2,28 +2,28 @@
 
 A universal mouse and keyboard automation tool written in C++ using the Windows API. This easy-to-use program automates repetitive tasks in any Windows application.
 
-## 📥 Download
+## Download
 
-➡️ [Download Latest Version](https://github.com/Albel-coder/AutoClicker/releases/latest)
+[Download Latest Version](https://github.com/Albel-coder/AutoClicker/releases/latest)
 
-## ✨ Features
+## Features
 
-### 🖱 Mouse Autoclicker
+### Mouse Autoclicker
 - Supports all buttons: left, right, and middle mouse buttons
 - Adjustable interval: from 10 ms to any desired time  
 - Background mode: runs on top of all windows
 
-### ⌨️ Keyboard Emulator
+### Keyboard Emulator
 - Any keys: supports all symbols and letters
 - Flexible configuration: easily select the desired key
 - Stable operation: reliable input emulation
 
-### 🎮 Convenient Controls
+### Convenient Controls
 - Hot keys: quickly switch modes without the interface
 - Real mode: display current status and settings
 - Interactive settings: change parameters on the fly
 
-## ⌨️ Controls
+## Controls
 
 | Key | Action |
 |-----|--------|
@@ -35,33 +35,33 @@ A universal mouse and keyboard automation tool written in C++ using the Windows 
 | Num- | Decrease interval (-10 ms) |
 | F10 | Exit program |
 
-## 📋 Usage Examples
+## Usage Examples
 
-### 🎮 For Gamers
+### For Gamers
 - Automatically use abilities in games
 - Resource farming without constant interaction  
 - Auto-clicking in browser games
 
-### 💻 For Developers
+### For Developers
 - Interface testing
 - Automation of repetitive actions
 - Functionality demonstration
 
-### 🏢 For Office Work
+### For Office Work
 - Automatic form filling
 - Bulk data processing
 - Application testing
 
-## 📦 Releases
+## Releases
 
 [View all releases](https://github.com/Albel-coder/AutoClicker/releases) - Download previous versions and see changelog
 
 ### Current Version Features
-- ✅ Stable mouse autoclicker
-- ✅ Keyboard emulation  
-- ✅ Hotkey controls
-- ✅ Background operation
+- Stable mouse autoclicker
+- Keyboard emulation  
+- Hotkey controls
+- Background operation
 
-## ⭐️ Support
+## Support
 
 If this project helped you, please give it a star on GitHub!
